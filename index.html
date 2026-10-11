@@ -3,702 +3,388 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PixelNest Digital | Affordable Website Design</title>
-   
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-   
-    <!-- Phosphor Icons -->
-    <script src="https://unpkg.com/@phosphor-icons/web"></script>
-
-
+    <title>PixelNest Digital</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
             theme: {
                 extend: {
+                    colors: {
+                        brand: {
+                            teal: '#3E838C',
+                            charcoal: '#1A242B',
+                            cream: '#F5F2E9',
+                            white: '#FFFFFF',
+                        }
+                    },
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
-                    },
-                    colors: {
-                        charcoal: '#17252A',
-                        teal: '#398985',
-                        cream: '#F8F5EE',
-                        white: '#FFFFFF',
-                        softgrey: '#f3f4f6',
-                        bordergrey: '#e5e7eb'
                     }
                 }
             }
         }
     </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         body { font-family: 'Inter', sans-serif; }
     </style>
 </head>
-<body class="bg-cream text-charcoal antialiased">
+<body class="bg-brand-cream text-brand-charcoal antialiased">
 
-
-    <nav class="fixed w-full bg-cream/90 backdrop-blur-md z-50 border-b border-bordergrey/50 transition-all duration-300">
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 transition-all duration-300 bg-brand-cream/90 backdrop-blur-md border-b border-brand-charcoal/10" id="navbar">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
                 <!-- Logo -->
-                <div class="flex-shrink-0 flex items-center">
-                    <a href="#home" class="flex flex-col items-start leading-none group transition-transform hover:scale-105">
-                        <div class="font-bold text-3xl sm:text-4xl tracking-tight mb-0.5">
-                            <span class="text-[#17252A]">Pixel</span><span class="text-[#398985]">Nest</span>
+                <div class="flex-shrink-0 flex items-center cursor-pointer" onclick="window.scrollTo(0,0)">
+                    <div class="flex flex-col items-center justify-center">
+                        <div class="flex items-baseline tracking-tight">
+                            <span class="text-4xl font-bold text-brand-charcoal">Pixel</span><span class="text-4xl font-bold text-brand-teal">Nest</span>
                         </div>
-                        <div class="text-[#17252A] text-[0.6rem] sm:text-xs font-medium tracking-[0.3em] uppercase w-full text-center sm:text-left sm:pl-1">
-                            DIGITAL
-                        </div>
-                    </a>
+                        <span class="text-[0.65rem] tracking-[0.3em] text-brand-charcoal mt-1 ml-1 font-medium">DIGITAL</span>
+                    </div>
                 </div>
-
 
                 <!-- Desktop Menu -->
                 <div class="hidden md:flex items-center space-x-8">
-                    <a href="#home" class="text-charcoal/80 hover:text-teal font-medium transition-colors">Home</a>
-                    <a href="#about" class="text-charcoal/80 hover:text-teal font-medium transition-colors">About</a>
-                    <a href="#services" class="text-charcoal/80 hover:text-teal font-medium transition-colors">Pricing</a>
-                    <a href="#contact" class="text-charcoal/80 hover:text-teal font-medium transition-colors">Contact</a>
-                    <a href="#demo" class="bg-teal hover:bg-teal/90 text-white px-5 py-2.5 rounded-md font-medium transition-all shadow-sm">
+                    <a href="#home" class="text-brand-charcoal hover:text-brand-teal transition-colors font-medium">Home</a>
+                    <a href="#about" class="text-brand-charcoal hover:text-brand-teal transition-colors font-medium">About</a>
+                    <a href="#pricing" class="text-brand-charcoal hover:text-brand-teal transition-colors font-medium">Pricing</a>
+                    <a href="#contact" class="text-brand-charcoal hover:text-brand-teal transition-colors font-medium">Contact</a>
+                    <a href="#contact" class="bg-brand-teal text-brand-white px-6 py-2.5 rounded-md hover:bg-brand-charcoal transition-colors font-medium shadow-sm">
                         Request a Free Demo
                     </a>
                 </div>
 
-
-                <!-- Mobile menu button -->
+                <!-- Mobile Menu Button -->
                 <div class="md:hidden flex items-center">
-                    <button id="mobile-menu-btn" class="text-charcoal hover:text-teal focus:outline-none p-2">
-                        <i class="ph ph-list text-3xl"></i>
+                    <button id="mobile-menu-btn" class="text-brand-charcoal hover:text-brand-teal focus:outline-none p-2">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                        </svg>
                     </button>
                 </div>
             </div>
         </div>
 
-
-        <!-- Mobile Menu (Hidden by default) -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-bordergrey absolute w-full shadow-lg">
-            <div class="px-4 pt-2 pb-6 space-y-2">
-                <a href="#home" class="block px-3 py-3 rounded-md text-base font-medium text-charcoal hover:bg-cream hover:text-teal">Home</a>
-                <a href="#about" class="block px-3 py-3 rounded-md text-base font-medium text-charcoal hover:bg-cream hover:text-teal">About</a>
-                <a href="#services" class="block px-3 py-3 rounded-md text-base font-medium text-charcoal hover:bg-cream hover:text-teal">Pricing</a>
-                <a href="#contact" class="block px-3 py-3 rounded-md text-base font-medium text-charcoal hover:bg-cream hover:text-teal">Contact</a>
-                <a href="#demo" class="block px-3 py-3 mt-4 text-center rounded-md text-base font-medium bg-teal text-white hover:bg-teal/90">Request a Free Demo</a>
+        <!-- Mobile Menu Panel -->
+        <div id="mobile-menu" class="hidden md:hidden bg-brand-cream border-t border-brand-charcoal/10 absolute w-full shadow-lg">
+            <div class="px-4 pt-2 pb-6 space-y-2 flex flex-col">
+                <a href="#home" class="mobile-link block px-3 py-3 text-brand-charcoal hover:bg-brand-teal/10 hover:text-brand-teal rounded-md font-medium">Home</a>
+                <a href="#about" class="mobile-link block px-3 py-3 text-brand-charcoal hover:bg-brand-teal/10 hover:text-brand-teal rounded-md font-medium">About</a>
+                <a href="#pricing" class="mobile-link block px-3 py-3 text-brand-charcoal hover:bg-brand-teal/10 hover:text-brand-teal rounded-md font-medium">Pricing</a>
+                <a href="#contact" class="mobile-link block px-3 py-3 text-brand-charcoal hover:bg-brand-teal/10 hover:text-brand-teal rounded-md font-medium">Contact</a>
+                <a href="#contact" class="mobile-link mt-4 w-full text-center bg-brand-teal text-brand-white px-6 py-3 rounded-md hover:bg-brand-charcoal transition-colors font-medium">
+                    Request a Free Demo
+                </a>
             </div>
         </div>
     </nav>
 
-
+    <!-- Hero Section -->
     <section id="home" class="pt-32 pb-20 md:pt-40 md:pb-28 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto flex flex-col items-center text-center">
-        <div class="max-w-3xl">
-            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6 text-charcoal">
-                Small Business. Big Dreams.
-            </h1>
-            <p class="text-lg md:text-xl text-charcoal/70 mb-8 max-w-2xl mx-auto leading-relaxed">
-                Professional, affordable websites designed to help small businesses and entrepreneurs build their online presence.
-            </p>
-            <p class="text-base text-charcoal/60 mb-10 max-w-2xl mx-auto">
-                From simple business websites to WhatsApp integration and professional image galleries, PixelNest Digital helps bring your business online without the big-agency price tag.
-            </p>
-           
-            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                <a href="#demo" class="w-full sm:w-auto bg-teal hover:bg-teal/90 text-white px-8 py-3.5 rounded-md font-medium transition-all shadow-md flex items-center justify-center gap-2">
-                    Request a Free Demo <i class="ph ph-arrow-right"></i>
-                </a>
-                <a href="#services" class="w-full sm:w-auto bg-white border border-bordergrey hover:border-teal text-charcoal px-8 py-3.5 rounded-md font-medium transition-all text-center">
-                    View Our Pricing
-                </a>
-            </div>
+        <h1 class="text-5xl md:text-7xl font-bold tracking-tight text-brand-charcoal mb-6 leading-tight">
+            Small Business. <br/>Big Dreams.
+        </h1>
+        <p class="mt-4 text-xl md:text-2xl text-brand-charcoal/80 max-w-3xl mb-10 leading-relaxed font-light">
+            Professional, affordable websites designed to help small businesses and entrepreneurs build their online presence.
+        </p>
+        <p class="text-sm md:text-base text-brand-charcoal/60 max-w-2xl mb-12">
+            From simple business websites to WhatsApp integration and professional image galleries, PixelNest Digital helps bring your business online without the big-agency price tag.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4">
+            <a href="#contact" class="bg-brand-teal text-brand-white px-8 py-4 rounded-md hover:bg-brand-charcoal transition-colors text-lg font-medium shadow-md flex items-center justify-center gap-2">
+                Request a Free Demo
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                </svg>
+            </a>
+            <a href="#pricing" class="bg-white text-brand-charcoal border border-brand-charcoal/20 px-8 py-4 rounded-md hover:bg-brand-charcoal/5 transition-colors text-lg font-medium shadow-sm flex items-center justify-center">
+                View Our Pricing
+            </a>
         </div>
     </section>
 
-
+    <!-- Features / What We Do -->
     <section id="about" class="py-20 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="max-w-3xl mx-auto text-center">
-                <h2 class="text-3xl md:text-4xl font-bold mb-8 text-charcoal">Small Business. Big Dreams.</h2>
-               
-                <div class="space-y-6 text-lg text-charcoal/70 leading-relaxed text-left md:text-center">
-                    <p>
-                        PixelNest Digital provides professional, affordable website design for small businesses and entrepreneurs who want to establish a strong online presence.
-                    </p>
-                    <p>
-                        We believe every business deserves the opportunity to be seen online, regardless of its size or budget.
-                    </p>
-                    <p>
-                        From your first business website to WhatsApp enquiry integration, business image galleries, and ongoing website updates, we aim to make getting online simple, accessible, and stress-free.
-                    </p>
-                    <p>
-                        Whether you're a salon owner, electrician, baker, independent service provider, or growing small business, let's create a digital presence that represents your business professionally.
-                    </p>
-
-
-                    <div class="pt-4 mt-2">
-                        <p class="font-bold text-charcoal">Lorain Kotze</p>
-                        <p class="text-sm text-teal font-medium uppercase tracking-wider">Owner / Web Designer</p>
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-brand-charcoal mb-4">Everything you need. Nothing you don't.</h2>
+                <p class="text-lg text-brand-charcoal/70 max-w-2xl mx-auto">We cut through the jargon to deliver clean, functional, and fast websites that actually help your business grow.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div class="p-8 rounded-2xl bg-brand-cream border border-brand-charcoal/5 hover:shadow-lg transition-shadow">
+                    <div class="w-12 h-12 bg-brand-teal/10 rounded-xl flex items-center justify-center mb-6 text-brand-teal">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path></svg>
                     </div>
+                    <h3 class="text-xl font-bold text-brand-charcoal mb-3">Custom Web Design</h3>
+                    <p class="text-brand-charcoal/70 leading-relaxed">A professional, mobile-friendly landing page or multi-page site tailored exactly to your brand's colours and identity.</p>
                 </div>
-
-
-                <div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
-                    <div class="bg-cream p-6 rounded-xl border border-bordergrey/50 flex items-start gap-4">
-                        <div class="bg-teal/10 p-3 rounded-lg text-teal shrink-0">
-                            <i class="ph-fill ph-tag text-2xl"></i>
-                        </div>
-                        <div>
-                            <h3 class="font-bold text-charcoal mb-1">Affordable Pricing</h3>
-                            <p class="text-sm text-charcoal/70">Transparent, once-off fees with no hidden surprises.</p>
-                        </div>
+                <!-- Feature 2 -->
+                <div class="p-8 rounded-2xl bg-brand-cream border border-brand-charcoal/5 hover:shadow-lg transition-shadow">
+                    <div class="w-12 h-12 bg-brand-teal/10 rounded-xl flex items-center justify-center mb-6 text-brand-teal">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
                     </div>
-                   
-                    <div class="bg-cream p-6 rounded-xl border border-bordergrey/50 flex items-start gap-4">
-                        <div class="bg-teal/10 p-3 rounded-lg text-teal shrink-0">
-                            <i class="ph-fill ph-device-mobile text-2xl"></i>
-                        </div>
-                        <div>
-                            <h3 class="font-bold text-charcoal mb-1">Clean Designs</h3>
-                            <p class="text-sm text-charcoal/70">Modern, mobile-friendly layouts that look great anywhere.</p>
-                        </div>
+                    <h3 class="text-xl font-bold text-brand-charcoal mb-3">WhatsApp Integration</h3>
+                    <p class="text-brand-charcoal/70 leading-relaxed">Turn website visitors into leads instantly. We integrate direct-to-WhatsApp contact forms so you never miss an inquiry.</p>
+                </div>
+                <!-- Feature 3 -->
+                <div class="p-8 rounded-2xl bg-brand-cream border border-brand-charcoal/5 hover:shadow-lg transition-shadow">
+                    <div class="w-12 h-12 bg-brand-teal/10 rounded-xl flex items-center justify-center mb-6 text-brand-teal">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
                     </div>
-
-
-                    <div class="bg-cream p-6 rounded-xl border border-bordergrey/50 flex items-start gap-4">
-                        <div class="bg-teal/10 p-3 rounded-lg text-teal shrink-0">
-                            <i class="ph-fill ph-handshake text-2xl"></i>
-                        </div>
-                        <div>
-                            <h3 class="font-bold text-charcoal mb-1">Friendly Service</h3>
-                            <p class="text-sm text-charcoal/70">Straightforward, easy communication every step of the way.</p>
-                        </div>
-                    </div>
+                    <h3 class="text-xl font-bold text-brand-charcoal mb-3">Galleries & Portfolios</h3>
+                    <p class="text-brand-charcoal/70 leading-relaxed">Showcase your products, past projects, or services with beautifully structured, fast-loading image galleries.</p>
                 </div>
             </div>
         </div>
     </section>
 
-
-    <section id="services" class="py-24 bg-cream">
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-20 bg-brand-cream">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold mb-6 text-charcoal">Pricing</h2>
-                <p class="text-lg text-charcoal/70">
-                    All listed prices are once-off website design fees unless stated otherwise.
-                </p>
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-brand-charcoal mb-4">Simple, Transparent Pricing</h2>
+                <p class="text-lg text-brand-charcoal/70 max-w-2xl mx-auto">No hidden fees. No complicated retainers. Just what you need to get online.</p>
             </div>
 
-
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
-               
-                <!-- Package 1: Free Demo -->
-                <div class="bg-white rounded-2xl shadow-sm border border-teal flex flex-col relative overflow-hidden">
-                    <div class="bg-teal text-white text-center text-xs font-bold py-1 uppercase tracking-wider absolute top-0 w-full">
-                        Start Here
+            <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                <!-- Basic Package -->
+                <div class="bg-white rounded-2xl p-8 border border-brand-charcoal/10 shadow-sm flex flex-col relative">
+                    <h3 class="text-2xl font-bold text-brand-charcoal mb-2">The Starter Nest</h3>
+                    <p class="text-brand-charcoal/60 mb-6 min-h-[48px]">Perfect for new businesses needing a professional landing page.</p>
+                    <div class="mb-8">
+                        <span class="text-4xl font-bold text-brand-charcoal">R1,500</span>
+                        <span class="text-brand-charcoal/60"> once-off</span>
                     </div>
-                    <div class="p-8 pt-10 flex-grow">
-                        <h3 class="text-xl font-bold text-charcoal mb-2">Free Website Demo</h3>
-                        <div class="flex items-baseline gap-1 mb-4">
-                            <span class="text-3xl font-bold text-charcoal">R0</span>
-                        </div>
-                        <p class="text-sm text-charcoal/70 mb-6 min-h-[60px]">
-                            Explore how your business could look online before committing to a website.
-                        </p>
-                        <ul class="space-y-3 text-sm text-charcoal/80 mb-8">
-                            <li class="flex items-start gap-2">
-                                <i class="ph-fill ph-check-circle text-teal mt-0.5"></i>
-                                <span>Homepage concept tailored to your business.</span>
-                            </li>
-                            <li class="flex items-start gap-2">
-                                <i class="ph-fill ph-check-circle text-teal mt-0.5"></i>
-                                <span>Preview of proposed design & layout.</span>
-                            </li>
-                            <li class="flex items-start gap-2">
-                                <i class="ph-fill ph-check-circle text-teal mt-0.5"></i>
-                                <span><strong>No obligation to purchase.</strong></span>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="p-8 pt-0 mt-auto">
-                        <a href="#demo" onclick="selectEnquiry('Basic Demo (Free)')" class="block w-full bg-teal hover:bg-teal/90 text-white text-center py-3 rounded-md font-medium transition-colors">
-                            Request Free Demo
-                        </a>
-                    </div>
+                    <ul class="space-y-4 mb-8 flex-1">
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-brand-teal mt-1 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            <span class="text-brand-charcoal/80">Single Page Landing Website</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-brand-teal mt-1 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            <span class="text-brand-charcoal/80">Mobile-First Responsive Design</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-brand-teal mt-1 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            <span class="text-brand-charcoal/80">WhatsApp Contact Button</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-brand-teal mt-1 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            <span class="text-brand-charcoal/80">Basic SEO Setup</span>
+                        </li>
+                    </ul>
+                    <a href="#contact" onclick="prefillForm('Starter Nest')" class="block w-full py-3 px-4 bg-white text-brand-teal border-2 border-brand-teal rounded-md text-center font-medium hover:bg-brand-teal hover:text-white transition-colors">
+                        Choose Starter
+                    </a>
                 </div>
 
-
-                <!-- Package 2: Basic -->
-                <div class="bg-white rounded-2xl shadow-sm border border-bordergrey flex flex-col hover:shadow-md transition-shadow">
-                    <div class="p-8 flex-grow">
-                        <h3 class="text-xl font-bold text-charcoal mb-2">Basic Online Presence</h3>
-                        <div class="flex items-baseline gap-1 mb-4">
-                            <span class="text-3xl font-bold text-charcoal">R950</span>
-                            <span class="text-sm text-charcoal/50">once-off</span>
-                        </div>
-                        <p class="text-sm text-charcoal/70 mb-6 min-h-[60px]">
-                            A simple, professional online presence for your business.
-                        </p>
-                        <ul class="space-y-3 text-sm text-charcoal/80 mb-8">
-                            <li class="flex items-start gap-2">
-                                <i class="ph-fill ph-check-circle text-charcoal/30 mt-0.5"></i>
-                                <span>One-page, mobile-friendly website.</span>
-                            </li>
-                            <li class="flex items-start gap-2">
-                                <i class="ph-fill ph-check-circle text-charcoal/30 mt-0.5"></i>
-                                <span>Business name and intro.</span>
-                            </li>
-                            <li class="flex items-start gap-2">
-                                <i class="ph-fill ph-check-circle text-charcoal/30 mt-0.5"></i>
-                                <span>Services/products overview.</span>
-                            </li>
-                            <li class="flex items-start gap-2">
-                                <i class="ph-fill ph-check-circle text-charcoal/30 mt-0.5"></i>
-                                <span>Phone & email contact links.</span>
-                            </li>
-                            <li class="flex items-start gap-2">
-                                <i class="ph-fill ph-check-circle text-charcoal/30 mt-0.5"></i>
-                                <span>One round of minor revisions.</span>
-                            </li>
-                        </ul>
+                <!-- Premium Package -->
+                <div class="bg-brand-charcoal rounded-2xl p-8 shadow-xl flex flex-col relative transform md:-translate-y-4">
+                    <div class="absolute top-0 right-8 transform -translate-y-1/2">
+                        <span class="bg-brand-teal text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Most Popular</span>
                     </div>
-                    <div class="p-8 pt-0 mt-auto">
-                        <a href="#demo" onclick="selectEnquiry('Quote Only - Basic Package')" class="block w-full bg-cream hover:bg-bordergrey text-charcoal text-center py-3 rounded-md font-medium transition-colors">
-                            Request This Package
-                        </a>
+                    <h3 class="text-2xl font-bold text-white mb-2">The Pro Nest</h3>
+                    <p class="text-brand-cream/70 mb-6 min-h-[48px]">A comprehensive online presence with galleries and multiple pages.</p>
+                    <div class="mb-8">
+                        <span class="text-4xl font-bold text-white">R3,500</span>
+                        <span class="text-brand-cream/70"> once-off</span>
                     </div>
-                </div>
-
-
-                <!-- Package 3: Showcase -->
-                <div class="bg-white rounded-2xl shadow-sm border border-bordergrey flex flex-col hover:shadow-md transition-shadow relative">
-                    <div class="p-8 flex-grow">
-                        <h3 class="text-xl font-bold text-charcoal mb-2">Business Showcase</h3>
-                        <div class="flex items-baseline gap-1 mb-4">
-                            <span class="text-3xl font-bold text-charcoal">R1,250</span>
-                            <span class="text-sm text-charcoal/50">once-off</span>
-                        </div>
-                        <p class="text-sm text-charcoal/70 mb-6 min-h-[60px]">
-                            A visual website that showcases your business and makes contacting you easier.
-                        </p>
-                        <ul class="space-y-3 text-sm text-charcoal/80 mb-8">
-                            <li class="flex items-start gap-2 font-medium">
-                                <i class="ph-fill ph-plus text-teal mt-0.5"></i>
-                                <span>Everything in Basic, plus:</span>
-                            </li>
-                            <li class="flex items-start gap-2">
-                                <i class="ph-fill ph-check-circle text-charcoal/30 mt-0.5"></i>
-                                <span>WhatsApp enquiry button.</span>
-                            </li>
-                            <li class="flex items-start gap-2">
-                                <i class="ph-fill ph-check-circle text-charcoal/30 mt-0.5"></i>
-                                <span>Image gallery (up to 10 images).</span>
-                            </li>
-                            <li class="flex items-start gap-2">
-                                <i class="ph-fill ph-check-circle text-charcoal/30 mt-0.5"></i>
-                                <span>Social media & Maps links.</span>
-                            </li>
-                            <li class="flex items-start gap-2">
-                                <i class="ph-fill ph-check-circle text-charcoal/30 mt-0.5"></i>
-                                <span>Two rounds of minor revisions.</span>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="p-8 pt-0 mt-auto">
-                        <a href="#demo" onclick="selectEnquiry('Quote Only - Business Showcase')" class="block w-full bg-cream hover:bg-bordergrey text-charcoal text-center py-3 rounded-md font-medium transition-colors">
-                            Request This Package
-                        </a>
-                    </div>
-                </div>
-
-
-                <!-- Package 4: Plus -->
-                <div class="bg-white rounded-2xl shadow-sm border border-bordergrey flex flex-col hover:shadow-md transition-shadow">
-                    <div class="p-8 flex-grow">
-                        <h3 class="text-xl font-bold text-charcoal mb-2">Business Plus</h3>
-                        <div class="flex items-baseline gap-1 mb-4">
-                            <span class="text-3xl font-bold text-charcoal">R2,000</span>
-                            <span class="text-sm text-charcoal/50">once-off</span>
-                        </div>
-                        <p class="text-sm text-charcoal/70 mb-6 min-h-[60px]">
-                            A comprehensive website for businesses wanting dedicated sections.
-                        </p>
-                        <ul class="space-y-3 text-sm text-charcoal/80 mb-8">
-                            <li class="flex items-start gap-2 font-medium">
-                                <i class="ph-fill ph-plus text-teal mt-0.5"></i>
-                                <span>Up to four pages (Home, About, Services, Contact)</span>
-                            </li>
-                            <li class="flex items-start gap-2">
-                                <i class="ph-fill ph-check-circle text-charcoal/30 mt-0.5"></i>
-                                <span>WhatsApp enquiry integration.</span>
-                            </li>
-                            <li class="flex items-start gap-2">
-                                <i class="ph-fill ph-check-circle text-charcoal/30 mt-0.5"></i>
-                                <span>Image gallery (up to 20 images).</span>
-                            </li>
-                            <li class="flex items-start gap-2">
-                                <i class="ph-fill ph-check-circle text-charcoal/30 mt-0.5"></i>
-                                <span>Social media & Maps details.</span>
-                            </li>
-                            <li class="flex items-start gap-2">
-                                <i class="ph-fill ph-check-circle text-charcoal/30 mt-0.5"></i>
-                                <span>Basic search-engine setup.</span>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="p-8 pt-0 mt-auto">
-                        <a href="#demo" onclick="selectEnquiry('Quote Only - Business Plus')" class="block w-full bg-cream hover:bg-bordergrey text-charcoal text-center py-3 rounded-md font-medium transition-colors">
-                            Request This Package
-                        </a>
-                    </div>
+                    <ul class="space-y-4 mb-8 flex-1">
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-brand-teal mt-1 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            <span class="text-brand-cream">Up to 5 Pages (Home, About, Services, etc.)</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-brand-teal mt-1 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            <span class="text-brand-cream">Professional Image Gallery/Portfolio</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-brand-teal mt-1 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            <span class="text-brand-cream">Custom WhatsApp Enquiry Form</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-brand-teal mt-1 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            <span class="text-brand-cream">Advanced SEO & Fast Hosting Setup</span>
+                        </li>
+                    </ul>
+                    <a href="#contact" onclick="prefillForm('Pro Nest')" class="block w-full py-3 px-4 bg-brand-teal text-white rounded-md text-center font-medium hover:bg-[#326a71] transition-colors">
+                        Choose Pro
+                    </a>
                 </div>
             </div>
-
-
-            <!-- Maintenance & Disclaimer -->
-            <div class="mt-16 bg-white p-6 sm:p-8 rounded-2xl border border-bordergrey max-w-4xl mx-auto shadow-sm">
-                <div class="flex flex-col md:flex-row gap-8 items-start">
-                    <div class="md:w-1/3">
-                        <h4 class="font-bold text-xl text-charcoal mb-2">Monthly Maintenance</h4>
-                        <div class="text-teal font-bold text-2xl mb-2">R250 <span class="text-sm text-charcoal/50 font-normal">/ month (Optional)</span></div>
-                    </div>
-                    <div class="md:w-2/3 text-sm text-charcoal/80">
-                        <p class="mb-3">Includes one small website update request per month (e.g., minor text changes, contact-detail updates, or image replacements). Additional work is quoted separately.</p>
-                    </div>
-                </div>
-                <hr class="border-bordergrey my-6">
-                <div class="text-xs text-charcoal/60 space-y-2">
-                    <p><strong>PRICING DISCLAIMER:</strong> All prices are introductory starting prices for the stated scope of work. Additional pages, complex features, major redesigns, booking systems, online stores, and other custom functionality may require a separate quote.</p>
-                    <p>Domain registration, hosting, premium platform subscriptions, third-party services, and other external fees are not included unless explicitly agreed in writing.</p>
-                </div>
+            
+            <div class="mt-12 text-center text-brand-charcoal/60 text-sm">
+                <p>* Domain registration and monthly hosting fees (approx R99/m) are handled directly by the client via local providers. We help you set it up for free.</p>
             </div>
         </div>
     </section>
 
-
-    <!-- Policy Section -->
-    <section class="py-16 bg-charcoal text-cream relative">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <div class="inline-block bg-teal/20 p-3 rounded-full mb-6">
-                <i class="ph ph-shield-check text-4xl text-teal"></i>
-            </div>
-            <h2 class="text-2xl md:text-3xl font-bold mb-8 text-white">Try the Concept Before You Commit.</h2>
-           
-            <div class="bg-white/5 border border-white/10 p-6 md:p-8 rounded-xl text-left space-y-4 text-sm md:text-base text-white">
-                <p>All initial website demos are <strong>FREE</strong>, with no obligation to purchase.</p>
-                <p>Your free demo allows you to preview the proposed website design before deciding whether to proceed.</p>
-                <p class="text-white font-medium">A free demo is a concept preview only. It does not include a completed, published, or fully functional website.</p>
-                <p>No official, completed website will be published, launched, or handed over to the client until the agreed payment has been received in full.</p>
-                <p>Domain registration, hosting, and third-party platform costs are separate unless otherwise stated in your quotation.</p>
-                <p>If you like your demo, you can request a quote or proceed with an agreed website package.</p>
-            </div>
-        </div>
-    </section>
-
-
-    <!-- Enquiry Form Section -->
-    <section id="demo" class="py-24 bg-white">
-        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4 text-charcoal">Let's Get Your Business Online</h2>
-                <p class="text-lg text-charcoal/70">
-                    Tell us a little about your business, and we'll get back to you about your free demo or website enquiry.
-                </p>
+                <h2 class="text-3xl md:text-4xl font-bold text-brand-charcoal mb-4">Let's Build Your Nest</h2>
+                <p class="text-lg text-brand-charcoal/70">Fill out the form below and we'll instantly send your details to our WhatsApp to get the conversation started.</p>
             </div>
 
-
-            <div class="bg-cream p-6 md:p-10 rounded-2xl shadow-sm border border-bordergrey relative">
-               
+            <div class="bg-brand-cream rounded-2xl p-6 md:p-10 border border-brand-charcoal/10 shadow-lg">
                 <form id="enquiryForm" class="space-y-6">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <!-- Name -->
                         <div>
-                            <label for="firstName" class="block text-sm font-medium text-charcoal mb-2">Name <span class="text-red-500">*</span></label>
-                            <input type="text" id="firstName" name="firstName" required class="w-full px-4 py-3 rounded-md border border-bordergrey focus:ring-2 focus:ring-teal focus:border-teal outline-none transition-all">
+                            <label for="name" class="block text-sm font-medium text-brand-charcoal mb-2">Your Name *</label>
+                            <input type="text" id="name" required class="w-full px-4 py-3 rounded-md border border-brand-charcoal/20 focus:outline-none focus:ring-2 focus:ring-brand-teal bg-white" placeholder="John Doe">
                         </div>
-                       
-                        <!-- Surname -->
                         <div>
-                            <label for="lastName" class="block text-sm font-medium text-charcoal mb-2">Surname <span class="text-red-500">*</span></label>
-                            <input type="text" id="lastName" name="lastName" required class="w-full px-4 py-3 rounded-md border border-bordergrey focus:ring-2 focus:ring-teal focus:border-teal outline-none transition-all">
+                            <label for="business" class="block text-sm font-medium text-brand-charcoal mb-2">Business Name</label>
+                            <input type="text" id="business" class="w-full px-4 py-3 rounded-md border border-brand-charcoal/20 focus:outline-none focus:ring-2 focus:ring-brand-teal bg-white" placeholder="John's Plumbing">
                         </div>
                     </div>
 
-
-                    <!-- Cell Number -->
                     <div>
-                        <label for="cellNumber" class="block text-sm font-medium text-charcoal mb-2">Cell number <span class="text-red-500">*</span></label>
-                        <input type="tel" id="cellNumber" name="cellNumber" required class="w-full px-4 py-3 rounded-md border border-bordergrey focus:ring-2 focus:ring-teal focus:border-teal outline-none transition-all" placeholder="e.g. 082 123 4567">
-                    </div>
-
-
-                    <!-- Business Name -->
-                    <div>
-                        <label for="businessName" class="block text-sm font-medium text-charcoal mb-2">Business name <span class="text-red-500">*</span></label>
-                        <input type="text" id="businessName" name="businessName" required class="w-full px-4 py-3 rounded-md border border-bordergrey focus:ring-2 focus:ring-teal focus:border-teal outline-none transition-all">
-                    </div>
-
-
-                    <!-- Enquiry Type -->
-                    <div>
-                        <label for="enquiryType" class="block text-sm font-medium text-charcoal mb-2">Enquiry type <span class="text-red-500">*</span></label>
-                        <select id="enquiryType" name="enquiryType" required class="w-full px-4 py-3 rounded-md border border-bordergrey focus:ring-2 focus:ring-teal focus:border-teal outline-none transition-all bg-white">
-                            <option value="" disabled selected>Select an option...</option>
-                            <option value="Basic Demo (Free)">Basic Demo (Free)</option>
-                            <option value="Quote Only - I'd like to discuss pricing and options.">Quote Only — I'd like to discuss pricing and website options.</option>
+                        <label for="package" class="block text-sm font-medium text-brand-charcoal mb-2">Interested Package</label>
+                        <select id="package" class="w-full px-4 py-3 rounded-md border border-brand-charcoal/20 focus:outline-none focus:ring-2 focus:ring-brand-teal bg-white text-brand-charcoal">
+                            <option value="Not Sure Yet">Not Sure Yet / Custom Quote</option>
+                            <option value="Starter Nest">The Starter Nest (R1,500)</option>
+                            <option value="Pro Nest">The Pro Nest (R3,500)</option>
                         </select>
                     </div>
 
-
-                    <!-- Optional Info -->
                     <div>
-                        <label for="additionalInfo" class="block text-sm font-medium text-charcoal mb-2">Additional information (Optional)</label>
-                        <textarea id="additionalInfo" name="additionalInfo" rows="4" class="w-full px-4 py-3 rounded-md border border-bordergrey focus:ring-2 focus:ring-teal focus:border-teal outline-none transition-all resize-none" placeholder="Describe your business, website needs, or preferred features..."></textarea>
+                        <label for="message" class="block text-sm font-medium text-brand-charcoal mb-2">Tell us a bit about what you need *</label>
+                        <textarea id="message" required rows="4" class="w-full px-4 py-3 rounded-md border border-brand-charcoal/20 focus:outline-none focus:ring-2 focus:ring-brand-teal bg-white" placeholder="I'm looking for a website that..."></textarea>
                     </div>
 
-
-                    <!-- Privacy Note -->
-                    <p class="text-xs text-charcoal/60">
-                        <i class="ph-fill ph-lock-key mr-1"></i> Your information is only used to respond to this enquiry. We do not store or share your details.
-                    </p>
-
-
-                    <!-- Submit Button -->
-                    <button type="submit" id="submitBtn" class="w-full bg-[#25D366] hover:bg-[#128C7E] text-white px-6 py-4 rounded-md font-bold text-lg transition-all flex justify-center items-center gap-2 shadow-md">
-                        <i class="ph-fill ph-whatsapp-logo text-2xl"></i> Send Enquiry via WhatsApp
+                    <button type="submit" class="w-full bg-brand-charcoal text-white font-medium py-4 rounded-md hover:bg-brand-teal transition-colors flex justify-center items-center gap-2 text-lg">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 00-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+                        Send via WhatsApp
                     </button>
                 </form>
-
-
-                <!-- Feedback Message Box (Hidden initially) -->
-                <div id="feedback-box" class="hidden mt-6 p-6 rounded-lg border text-center">
-                    <!-- Populated by JS -->
-                </div>
-
-
             </div>
         </div>
     </section>
-
-
-    <!-- Contact Section -->
-    <section id="contact" class="py-24 bg-charcoal text-cream text-center">
-        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl sm:text-4xl font-bold mb-6 text-white">Let's Talk About Your Website</h2>
-            <p class="text-lg text-cream/80 mb-10">
-                Have an idea for your business website, or simply want to understand your options? Send us an enquiry and let's explore the possibilities.
-            </p>
-           
-            <div class="flex flex-col sm:flex-row justify-center items-center gap-4 mb-12">
-                <a href="https://wa.me/27746353002" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto bg-[#25D366] hover:bg-[#128C7E] text-white px-8 py-3.5 rounded-md font-medium transition-all shadow-lg flex items-center justify-center gap-2">
-                    <i class="ph-fill ph-whatsapp-logo text-xl"></i> Chat on WhatsApp
-                </a>
-                <a href="#demo" class="w-full sm:w-auto bg-transparent border border-cream/30 hover:border-cream text-cream px-8 py-3.5 rounded-md font-medium transition-all text-center">
-                    Scroll to Form
-                </a>
-            </div>
-
-
-            <div class="pt-8 border-t border-white/10">
-                <h3 class="text-xl font-bold text-white mb-2">PixelNest Digital</h3>
-                <p class="text-cream/90 font-medium mb-5 text-lg">Owner / Web Designer: Lorain Kotze</p>
-               
-                <div class="flex flex-col items-center justify-center gap-3 text-cream/80 mb-5">
-                    <a href="mailto:loraintaljaard101@gmail.com" class="hover:text-teal transition-colors flex items-center justify-center gap-2">
-                        <i class="ph-fill ph-envelope-simple text-xl"></i> loraintaljaard101@gmail.com
-                    </a>
-                    <a href="tel:+27746353002" class="hover:text-teal transition-colors flex items-center justify-center gap-2">
-                        <i class="ph-fill ph-phone text-xl"></i> 074 635 3002
-                    </a>
-                    <p class="flex justify-center items-center gap-2 text-cream/60 mt-1">
-                        <i class="ph-fill ph-map-pin text-xl"></i> Pretoria, South Africa
-                    </p>
-                </div>
-
-
-                <p class="text-sm text-cream/50 mt-2">Services available nationwide via online communication.</p>
-            </div>
-        </div>
-    </section>
-
 
     <!-- Footer -->
-    <footer class="bg-[#0f191c] py-10 border-t border-white/5">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
-            <div class="flex flex-col items-center md:items-start">
-                <div class="flex items-center gap-2 mb-2">
-                    <div class="w-8 h-8 rounded bg-teal/20 flex items-center justify-center text-teal font-bold">P</div>
-                    <span class="font-bold text-lg text-white tracking-tight">PixelNest Digital</span>
+    <footer class="bg-brand-charcoal text-white pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+                <div>
+                    <div class="flex flex-col items-start justify-center mb-4">
+                        <div class="flex items-baseline tracking-tight">
+                            <span class="text-3xl font-bold text-brand-cream">Pixel</span><span class="text-3xl font-bold text-brand-teal">Nest</span>
+                        </div>
+                        <span class="text-[0.55rem] tracking-[0.3em] text-brand-cream mt-1 ml-1 font-medium">DIGITAL</span>
+                    </div>
+                    <p class="text-brand-cream/60 text-sm max-w-xs">Building beautiful, functional, and affordable websites for South African small businesses.</p>
                 </div>
-                <p class="text-sm text-cream/60">Small Business. Big Dreams.</p>
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-brand-cream/70 text-sm">
+                        <li><a href="#home" class="hover:text-brand-teal transition-colors">Home</a></li>
+                        <li><a href="#about" class="hover:text-brand-teal transition-colors">What We Do</a></li>
+                        <li><a href="#pricing" class="hover:text-brand-teal transition-colors">Pricing Packages</a></li>
+                        <li><a href="#contact" class="hover:text-brand-teal transition-colors">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Get in Touch</h4>
+                    <ul class="space-y-2 text-brand-cream/70 text-sm">
+                        <li class="flex items-center gap-2">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                            hello@pixelnestdigital.co.za
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                            Pretoria, South Africa
+                        </li>
+                    </ul>
+                </div>
             </div>
-           
-            <div class="flex flex-wrap justify-center gap-4 text-sm text-cream/70">
-                <a href="#home" class="hover:text-teal transition-colors">Home</a>
-                <a href="#about" class="hover:text-teal transition-colors">About</a>
-                <a href="#services" class="hover:text-teal transition-colors">Pricing</a>
-                <a href="#demo" class="hover:text-teal transition-colors">Request Demo</a>
+            <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-brand-cream/40">
+                <p>&copy; <span id="year"></span> PixelNest Digital. All rights reserved.</p>
+                <div class="mt-4 md:mt-0 space-x-4">
+                    <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+                    <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
+                </div>
             </div>
-        </div>
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8 text-center text-xs text-cream/40">
-            <p>&copy; <span id="year"></span> PixelNest Digital. All rights reserved.</p>
-            <p class="mt-1">Domain, hosting, and third-party fees are separate unless agreed otherwise.</p>
         </div>
     </footer>
 
-
     <!-- Floating WhatsApp Button -->
-    <a href="https://wa.me/27746353002" target="_blank" rel="noopener noreferrer" class="fixed bottom-6 right-6 w-14 h-14 bg-[#25D366] text-white rounded-full flex items-center justify-center shadow-[0_4px_14px_0_rgba(37,211,102,0.39)] hover:bg-[#128C7E] hover:scale-105 transition-all z-40 group" aria-label="Contact us on WhatsApp">
-        <i class="ph-fill ph-whatsapp-logo text-3xl"></i>
-        <!-- Tooltip -->
-        <span class="absolute right-16 bg-white text-charcoal text-xs font-bold py-1.5 px-3 rounded shadow-md opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none border border-bordergrey">
-            Chat with us
-        </span>
+    <a href="https://wa.me/27725838528" class="fixed bottom-6 right-6 bg-[#25D366] text-white p-4 rounded-full shadow-xl hover:bg-[#128C7E] transition-all hover:scale-110 z-50 group flex items-center justify-center">
+        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 00-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+        <span class="absolute right-full mr-4 bg-brand-charcoal text-white text-sm px-3 py-1.5 rounded-md opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">Chat with us</span>
     </a>
 
-
-    <!-- Scripts -->
     <script>
-        // Ensure DOM is fully loaded before attaching scripts to prevent errors
         document.addEventListener('DOMContentLoaded', () => {
-           
-            // Set current year in footer safely
-            const yearElement = document.getElementById('year');
-            if (yearElement) {
-                yearElement.textContent = new Date().getFullYear();
-            }
+            // Set current year in footer
+            document.getElementById('year').textContent = new Date().getFullYear();
 
-
-            // Mobile Menu Toggle safely
+            // Mobile menu toggle
             const btn = document.getElementById('mobile-menu-btn');
             const menu = document.getElementById('mobile-menu');
-           
-            if (btn && menu) {
-                const menuIcon = btn.querySelector('i');
-               
-                btn.addEventListener('click', () => {
-                    menu.classList.toggle('hidden');
-                    if (menuIcon) {
-                        if (menu.classList.contains('hidden')) {
-                            menuIcon.classList.remove('ph-x');
-                            menuIcon.classList.add('ph-list');
-                        } else {
-                            menuIcon.classList.remove('ph-list');
-                            menuIcon.classList.add('ph-x');
-                        }
-                    }
+            const links = document.querySelectorAll('.mobile-link');
+
+            btn.addEventListener('click', () => {
+                menu.classList.toggle('hidden');
+            });
+
+            // Close mobile menu when clicking a link
+            links.forEach(link => {
+                link.addEventListener('click', () => {
+                    menu.classList.add('hidden');
                 });
+            });
 
+            // Navbar scroll effect
+            const navbar = document.getElementById('navbar');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 10) {
+                    navbar.classList.add('shadow-sm');
+                } else {
+                    navbar.classList.remove('shadow-sm');
+                }
+            });
 
-                // Close mobile menu on link click safely
-                menu.querySelectorAll('a').forEach(link => {
-                    link.addEventListener('click', () => {
-                        menu.classList.add('hidden');
-                        if (menuIcon) {
-                            menuIcon.classList.remove('ph-x');
-                            menuIcon.classList.add('ph-list');
-                        }
-                    });
-                });
-            }
-
-
-            // Form Handling safely
+            // WhatsApp Form Submission
             const form = document.getElementById('enquiryForm');
-            const feedbackBox = document.getElementById('feedback-box');
-            const whatsappNumber = "27746353002"; // Pre-formatted international number
-
-
-            if (form && feedbackBox) {
+            if (form) {
                 form.addEventListener('submit', function(e) {
-                    e.preventDefault(); // Prevent standard form submission
-
-
-                    // 1. Gather Data
-                    const formData = new FormData(form);
-                    const name = formData.get('firstName').trim();
-                    const surname = formData.get('lastName').trim();
-                    const cell = formData.get('cellNumber').trim();
-                    const business = formData.get('businessName').trim();
-                    const type = formData.get('enquiryType');
-                    const info = formData.get('additionalInfo').trim() || "None provided";
-
-
-                    if (!name || !surname || !cell || !business || !type) {
-                        return; // Let native HTML validation handle showing the error
-                    }
-
-
-                    // 2. Construct Message Template
-                    const message = `PIXELNEST DIGITAL — NEW WEBSITE ENQUIRY
-Name: ${name}
-Surname: ${surname}
-Cell Number: ${cell}
-Business Name: ${business}
-Enquiry Type: ${type}
-Additional Information:
-${info}
-Submitted through the PixelNest Digital website.`;
-
-
-                    // 3. URL Encode
-                    const encodedMessage = encodeURIComponent(message);
-                    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
-
-
-                    // 4. Open WhatsApp
-                    window.open(whatsappUrl, '_blank');
-
-
-                    // 5. Show Feedback to User
-                    form.style.display = 'none'; // Hide form to show success state clearly
-                    feedbackBox.classList.remove('hidden');
-                    feedbackBox.classList.add('bg-teal/10', 'border-teal/30');
-                   
-                    feedbackBox.innerHTML = `
-                        <div class="flex flex-col items-center">
-                            <div class="w-16 h-16 bg-[#25D366]/20 rounded-full flex items-center justify-center mb-4">
-                                <i class="ph-fill ph-whatsapp-logo text-4xl text-[#25D366]"></i>
-                            </div>
-                            <h3 class="text-xl font-bold text-charcoal mb-2">Almost there!</h3>
-                            <p class="text-charcoal/80 mb-6 max-w-sm mx-auto">
-                                Your enquiry message is ready in WhatsApp. <strong>Please press Send in WhatsApp</strong> to submit your request to PixelNest Digital.
-                            </p>
-                            <div class="mt-2 text-xs text-charcoal/60 p-3 bg-white border border-bordergrey rounded w-full max-w-sm">
-                                If WhatsApp did not open automatically, click the button below.
-                            </div>
-                            <a href="${whatsappUrl}" target="_blank" rel="noopener noreferrer" class="mt-4 bg-charcoal hover:bg-black text-white px-5 py-3 rounded-md font-medium text-sm transition-colors flex items-center justify-center gap-2 w-full max-w-sm">
-                                <i class="ph-fill ph-whatsapp-logo text-lg"></i> Open WhatsApp Manually
-                            </a>
-                           
-                            <button onclick="location.reload()" class="mt-6 text-sm text-teal hover:underline">
-                                Start a new enquiry
-                            </button>
-                        </div>
-                    `;
+                    e.preventDefault();
+                    
+                    const name = document.getElementById('name').value;
+                    const business = document.getElementById('business').value;
+                    const pkg = document.getElementById('package').value;
+                    const message = document.getElementById('message').value;
+                    
+                    const text = `*New Website Enquiry* 🚀\n\n*Name:* ${name}\n*Business:* ${business || 'Not provided'}\n*Package Interest:* ${pkg}\n\n*Message:* ${message}`;
+                    
+                    const phoneNumber = '27725838528'; 
+                    const encodedMessage = encodeURIComponent(text);
+                    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+                    
+                    // Fixed mobile bug: removed target="_blank" equivalent
+                    window.location.href = whatsappUrl;
                 });
             }
         });
 
-
-        // Pre-select enquiry type from pricing cards (Global scope needed for inline onClick)
-        function selectEnquiry(type) {
-            const select = document.getElementById('enquiryType');
+        // Function to pre-select package from pricing table
+        function prefillForm(pkgName) {
+            const select = document.getElementById('package');
             if (select) {
-                // Check if exact option exists, if not, find partial match (for packages)
-                let found = false;
-                for(let i=0; i<select.options.length; i++) {
-                    if(select.options[i].value === type) {
-                        select.value = type;
-                        found = true;
+                for(let i=0; i < select.options.length; i++) {
+                    if(select.options[i].value === pkgName) {
+                        select.selectedIndex = i;
                         break;
                     }
-                }
-                if(!found && type.includes('Quote')) {
-                     select.value = "Quote Only - I'd like to discuss pricing and options.";
                 }
             }
         }
     </script>
 </body>
 </html>
-
