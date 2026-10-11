@@ -461,7 +461,7 @@
             </p>
             
             <div class="flex flex-col sm:flex-row justify-center items-center gap-4 mb-12">
-                <a href="https://wa.me/27746353002" class="w-full sm:w-auto bg-[#25D366] hover:bg-[#128C7E] text-white px-8 py-3.5 rounded-md font-medium transition-all shadow-lg flex items-center justify-center gap-2">
+                <a href="https://wa.me/27746353002" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto bg-[#25D366] hover:bg-[#128C7E] text-white px-8 py-3.5 rounded-md font-medium transition-all shadow-lg flex items-center justify-center gap-2">
                     <i class="ph-fill ph-whatsapp-logo text-xl"></i> Chat on WhatsApp
                 </a>
                 <a href="#demo" class="w-full sm:w-auto bg-transparent border border-cream/30 hover:border-cream text-cream px-8 py-3.5 rounded-md font-medium transition-all text-center">
@@ -515,7 +515,7 @@
     </footer>
 
     <!-- Floating WhatsApp Button -->
-    <a href="https://wa.me/27746353002" class="fixed bottom-6 right-6 w-14 h-14 bg-[#25D366] text-white rounded-full flex items-center justify-center shadow-[0_4px_14px_0_rgba(37,211,102,0.39)] hover:bg-[#128C7E] hover:scale-105 transition-all z-40 group" aria-label="Contact us on WhatsApp">
+    <a href="https://wa.me/27746353002" target="_blank" rel="noopener noreferrer" class="fixed bottom-6 right-6 w-14 h-14 bg-[#25D366] text-white rounded-full flex items-center justify-center shadow-[0_4px_14px_0_rgba(37,211,102,0.39)] hover:bg-[#128C7E] hover:scale-105 transition-all z-40 group" aria-label="Contact us on WhatsApp">
         <i class="ph-fill ph-whatsapp-logo text-3xl"></i>
         <!-- Tooltip -->
         <span class="absolute right-16 bg-white text-charcoal text-xs font-bold py-1.5 px-3 rounded shadow-md opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none border border-bordergrey">
@@ -599,16 +599,21 @@ Additional Information:
 ${info}
 Submitted through the PixelNest Digital website.`;
 
-                    // 3. URL Encode
+                    // 3. URL Encode and create both App and Web URIs
                     const encodedMessage = encodeURIComponent(message);
-                    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+                    const appUrl = `whatsapp://send?phone=${whatsappNumber}&text=${encodedMessage}`;
+                    const webUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
 
-                    // 4. Open WhatsApp
-                    // Changed from window.open(whatsappUrl, '_blank'); to fix mobile issue
-                    window.location.href = whatsappUrl;
+                    // 4. Primary action: Open the official wa.me link in a new tab
+                    window.open(webUrl, '_blank');
 
-                    // 5. Show Feedback to User
-                    form.style.display = 'none'; // Hide form to show success state clearly
+                    // 5. Show Feedback to User with Fallbacks
+                    const submitBtn = document.getElementById('submitBtn');
+                    if (submitBtn) {
+                        // Keep the button active so the user can click it again if needed
+                        submitBtn.innerHTML = '<i class="ph-fill ph-whatsapp-logo text-2xl"></i> Resend Enquiry';
+                    }
+                    
                     feedbackBox.classList.remove('hidden');
                     feedbackBox.classList.add('bg-teal/10', 'border-teal/30');
                     
@@ -618,17 +623,19 @@ Submitted through the PixelNest Digital website.`;
                                 <i class="ph-fill ph-whatsapp-logo text-4xl text-[#25D366]"></i>
                             </div>
                             <h3 class="text-xl font-bold text-charcoal mb-2">Almost there!</h3>
-                            <p class="text-charcoal/80 mb-6 max-w-sm mx-auto">
-                                Your enquiry message is ready in WhatsApp. <strong>Please press Send in WhatsApp</strong> to submit your request to PixelNest Digital.
+                            <p class="text-charcoal/80 mb-4 max-w-sm mx-auto">
+                                We are attempting to open WhatsApp. <strong>Please press "Send" in WhatsApp</strong> to actually submit your enquiry.
                             </p>
-                            <div class="mt-2 text-xs text-charcoal/60 p-3 bg-white border border-bordergrey rounded w-full max-w-sm">
-                                If WhatsApp did not open automatically, click the button below.
+                            <div class="mt-2 p-5 bg-white border border-bordergrey rounded w-full max-w-sm text-sm text-charcoal/80 text-left space-y-3 shadow-sm">
+                                <p class="font-semibold text-charcoal text-center mb-2">Didn't open automatically?</p>
+                                <a href="${webUrl}" target="_blank" rel="noopener noreferrer" class="block w-full bg-[#25D366] hover:bg-[#128C7E] text-white px-4 py-3 rounded-md font-medium text-center transition-colors">
+                                    Open WhatsApp in Browser
+                                </a>
+                                <a href="${appUrl}" class="block w-full bg-charcoal hover:bg-black text-white px-4 py-3 rounded-md font-medium text-center transition-colors">
+                                    Open WhatsApp App Directly
+                                </a>
                             </div>
-                            <a href="${whatsappUrl}" class="mt-4 bg-charcoal hover:bg-black text-white px-5 py-3 rounded-md font-medium text-sm transition-colors flex items-center justify-center gap-2 w-full max-w-sm">
-                                <i class="ph-fill ph-whatsapp-logo text-lg"></i> Open WhatsApp Manually
-                            </a>
-                            
-                            <button onclick="location.reload()" class="mt-6 text-sm text-teal hover:underline">
+                            <button onclick="location.reload()" class="mt-6 text-sm text-teal hover:underline font-medium">
                                 Start a new enquiry
                             </button>
                         </div>
