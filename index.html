@@ -437,9 +437,9 @@
                         <i class="ph-fill ph-lock-key mr-1"></i> Your information is only used to respond to this enquiry. We do not store or share your details.
                     </p>
 
-                    <!-- Submit Button -->
-                    <button type="submit" id="submitBtn" class="w-full bg-[#25D366] hover:bg-[#128C7E] text-white px-6 py-4 rounded-md font-bold text-lg transition-all flex justify-center items-center gap-2 shadow-md">
-                        <i class="ph-fill ph-whatsapp-logo text-2xl"></i> Send Enquiry via WhatsApp
+                    <!-- Submit Button updated for Email -->
+                    <button type="submit" id="submitBtn" class="w-full bg-teal hover:bg-teal/90 text-white px-6 py-4 rounded-md font-bold text-lg transition-all flex justify-center items-center gap-2 shadow-md">
+                        <i class="ph-fill ph-envelope-simple text-2xl"></i> Send Enquiry via Email
                     </button>
                 </form>
 
@@ -566,11 +566,10 @@
                 });
             }
 
-            // Form Handling safely
+            // Form Handling for Email Submission
             const form = document.getElementById('enquiryForm');
             const feedbackBox = document.getElementById('feedback-box');
-            const whatsappNumber = "27746353002"; // Pre-formatted international number
-
+            
             if (form && feedbackBox) {
                 form.addEventListener('submit', function(e) {
                     e.preventDefault(); // Prevent standard form submission
@@ -599,47 +598,65 @@ Additional Information:
 ${info}
 Submitted through the PixelNest Digital website.`;
 
-                    // 3. URL Encode and create both App and Web URIs
+                    // 3. URL Encode and create Mailto URI
+                    const subject = "New Website Enquiry - PixelNest Digital";
+                    const encodedSubject = encodeURIComponent(subject);
                     const encodedMessage = encodeURIComponent(message);
-                    const appUrl = `whatsapp://send?phone=${whatsappNumber}&text=${encodedMessage}`;
-                    const webUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+                    const mailtoUrl = `mailto:loraintaljaard101@gmail.com?subject=${encodedSubject}&body=${encodedMessage}`;
 
-                    // 4. Primary action: Open the official wa.me link in a new tab
-                    window.open(webUrl, '_blank');
+                    // 4. Primary action: Open the mailto link
+                    window.location.href = mailtoUrl;
 
                     // 5. Show Feedback to User with Fallbacks
                     const submitBtn = document.getElementById('submitBtn');
                     if (submitBtn) {
                         // Keep the button active so the user can click it again if needed
-                        submitBtn.innerHTML = '<i class="ph-fill ph-whatsapp-logo text-2xl"></i> Resend Enquiry';
+                        submitBtn.innerHTML = '<i class="ph-fill ph-envelope-simple text-2xl"></i> Resend Enquiry';
                     }
                     
+                    form.style.display = 'none'; // Hide form to show success state clearly
                     feedbackBox.classList.remove('hidden');
                     feedbackBox.classList.add('bg-teal/10', 'border-teal/30');
                     
                     feedbackBox.innerHTML = `
                         <div class="flex flex-col items-center">
-                            <div class="w-16 h-16 bg-[#25D366]/20 rounded-full flex items-center justify-center mb-4">
-                                <i class="ph-fill ph-whatsapp-logo text-4xl text-[#25D366]"></i>
+                            <div class="w-16 h-16 bg-teal/20 rounded-full flex items-center justify-center mb-4">
+                                <i class="ph-fill ph-envelope-simple text-4xl text-teal"></i>
                             </div>
                             <h3 class="text-xl font-bold text-charcoal mb-2">Almost there!</h3>
                             <p class="text-charcoal/80 mb-4 max-w-sm mx-auto">
-                                We are attempting to open WhatsApp. <strong>Please press "Send" in WhatsApp</strong> to actually submit your enquiry.
+                                We are attempting to open your email app. <strong>Please press "Send" in your email application</strong> to actually submit your enquiry.
                             </p>
                             <div class="mt-2 p-5 bg-white border border-bordergrey rounded w-full max-w-sm text-sm text-charcoal/80 text-left space-y-3 shadow-sm">
                                 <p class="font-semibold text-charcoal text-center mb-2">Didn't open automatically?</p>
-                                <a href="${webUrl}" target="_blank" rel="noopener noreferrer" class="block w-full bg-[#25D366] hover:bg-[#128C7E] text-white px-4 py-3 rounded-md font-medium text-center transition-colors">
-                                    Open WhatsApp in Browser
+                                <a href="${mailtoUrl}" class="block w-full bg-teal hover:bg-teal/90 text-white px-4 py-3 rounded-md font-medium text-center transition-colors">
+                                    Open Email App
                                 </a>
-                                <a href="${appUrl}" class="block w-full bg-charcoal hover:bg-black text-white px-4 py-3 rounded-md font-medium text-center transition-colors">
-                                    Open WhatsApp App Directly
-                                </a>
+                                <p class="text-center text-xs mt-2">Or email us directly at: <br><a href="mailto:loraintaljaard101@gmail.com" class="font-bold text-teal hover:underline">loraintaljaard101@gmail.com</a></p>
+                                <button id="copyBtn" class="block w-full mt-2 bg-charcoal hover:bg-black text-white px-4 py-3 rounded-md font-medium text-center transition-colors flex justify-center items-center gap-2">
+                                    <i class="ph-fill ph-copy text-lg"></i> Copy Details
+                                </button>
                             </div>
                             <button onclick="location.reload()" class="mt-6 text-sm text-teal hover:underline font-medium">
                                 Start a new enquiry
                             </button>
                         </div>
                     `;
+
+                    // Attach event listener for the copy button safely
+                    const copyBtn = document.getElementById('copyBtn');
+                    if (copyBtn) {
+                        copyBtn.addEventListener('click', function() {
+                            navigator.clipboard.writeText(message).then(() => {
+                                copyBtn.innerHTML = '<i class="ph-fill ph-check text-lg"></i> Copied!';
+                                setTimeout(() => {
+                                    copyBtn.innerHTML = '<i class="ph-fill ph-copy text-lg"></i> Copy Details';
+                                }, 2000);
+                            }).catch(err => {
+                                console.error('Could not copy text: ', err);
+                            });
+                        });
+                    }
                 });
             }
         });
